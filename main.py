@@ -1,3 +1,4 @@
+from email.utils import formataddr
 from smtplib import SMTP_SSL
 from email.message import EmailMessage
 import json
@@ -53,7 +54,9 @@ Please find below the Report
 
 def send_mail(sender_email, receiver_email, mail_password, mail_subject, all_file_names, body):
     msg = EmailMessage()
-    msg["From"] = sender_email
+
+    # msg["From"] = sender_email
+    msg["From"] = formataddr(("Sender's Name", sender_email))
     msg["To"] = receiver_email
     msg["Cc"] = "sayantankar02@gmail.com"
     msg["Bcc"] = "contact@sayantankar.com"
@@ -77,9 +80,6 @@ def send_mail(sender_email, receiver_email, mail_password, mail_subject, all_fil
         smtp.send_message(msg)
         smtp.close()
     print("Mail Sent Successfully")
-
-
-
 
 
 send_mail(
