@@ -58,6 +58,7 @@ def send_mail(sender_email, receiver_email, mail_password, mail_subject, all_fil
     msg["Cc"] = "sayantankar02@gmail.com"
     msg["Bcc"] = "contact@sayantankar.com"
     msg["Subject"] = mail_subject
+    msg['Reply-to'] = "demo@gmail.com"
     msg.add_alternative(body, subtype="html")
     for file_name in all_file_names:
         mime_type, encoding = guess_type(file_name)
